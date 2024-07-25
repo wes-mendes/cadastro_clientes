@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Clientes</h1>
+    </header>
+    <div class="container">
+        <a href="/clientes/adicionar">Adicionar Cliente</a>
+        <ul>
+            <% clientes.forEach(cliente => { %>
+                <li>
+                    <span><%= cliente.nome %> - <%= cliente.email %> - <%= cliente.telefone %></span>
+                    <span>
+                        <a href="/clientes/<%= cliente.id %>">Editar</a>
+                        <form action="/clientes/<%= cliente.id %>/deletar" method="post" style="display:inline;">
+                            <button type="submit">Deletar</button>
+                        </form>
+                    </span>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
